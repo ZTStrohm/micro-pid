@@ -13,16 +13,18 @@
 #ifndef PID_h
 #define PID_h
 #include "Arduino.h"
- 
+
 class PID
 {
   public:
-    PID(int cvPin, int pvPin);
-    void setSP();
-    float cvCalc();
+    PID(float _sp, float _Kp, float _Ki, float _Kd,float _dt);
+
   private:
     bool enable;
-    float sp, cv, pv;
+    float pv,cv,sp,error,integral,derivative,dt, previous_error;
+    float Kp,Ki,Kd;
+    int Mode;
+
 };
 
 #endif
